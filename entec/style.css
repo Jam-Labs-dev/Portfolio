@@ -1,0 +1,212 @@
+:root {
+    --entec-pink: #ff00ff;
+    --entec-blue: #0055ff;
+    --entec-green: #00cc66;
+    --entec-cream: #fdfbf7;
+}
+
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: var(--entec-cream);
+    color: #000;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/* ==========================================
+   CURSOR CUSTOMIZADO (PIXEL ART)
+========================================== */
+@media (pointer: fine) {
+    body, a, button {
+        cursor: none !important;
+    }
+}
+
+#custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 16px;
+    height: 16px;
+    background-image: url('./assets/cursor-normal.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    pointer-events: none; 
+    z-index: 999999;
+    transform: scale(2); 
+    transform-origin: top left;
+    image-rendering: pixelated; 
+    image-rendering: crisp-edges;
+}
+
+#custom-cursor.pointer {
+    background-image: url('./assets/cursor-pointer.png');
+}
+
+@media (pointer: coarse) {
+    #custom-cursor {
+        display: none !important;
+    }
+}
+
+/* ==========================================
+   EFEITO DE FITA DE LUZ TÁTIL (MOBILE)
+========================================== */
+.touch-trail-segment {
+    position: absolute;
+    pointer-events: none;
+    z-index: 45;
+    transform-origin: 0 50%; 
+    display: flex;
+    align-items: center; 
+    height: 30px; 
+    margin-top: -15px; 
+}
+
+.touch-trail-inner {
+    width: 100%;
+    height: 6px; 
+    background-color: #ffffff; 
+    border-radius: 10px; 
+    box-shadow: 0 0 10px 4px #ff00ff, 0 0 20px 8px #ff00ff; 
+    animation: trailInnerFade 0.4s ease-out forwards;
+}
+
+@keyframes trailInnerFade {
+    0% { opacity: 1; transform: scaleY(1); }
+    100% { opacity: 0; transform: scaleY(0.1); } 
+}
+
+/* ==========================================
+   ANIMAÇÃO DA LOGO FLUTUANTE (HERO)
+========================================== */
+#floating-hero-logo {
+    position: absolute;
+    transition: all 0.6s ease-in-out;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#floating-hero-logo img {
+    transition: all 0.6s ease-in-out;
+}
+
+/* Estado 0: Página Principal (Mobile e Desktop) */
+.logo-state-center {
+    top: 50%; 
+    left: 50%;
+    /* Rotação explicitamente a 0 para não girar bizarramente */
+    transform: translate(-50%, -50%) rotate(0deg); 
+    background-color: transparent;
+    border: 4px solid transparent;
+    padding: 0;
+    box-shadow: 0px 0px 0px 0px rgba(0,0,0,1);
+    opacity: 1;
+}
+
+.logo-state-center img {
+    height: 6rem; 
+    width: auto;
+    max-width: 90vw;
+    object-fit: contain; 
+    filter: drop-shadow(4px 4px 0 rgba(0,0,0,1));
+}
+
+/* Estado 1: Outras Páginas (No Mobile apenas DESAPARECE) */
+.logo-state-corner {
+    top: 50%;
+    left: 50%;
+    /* Rotação RESTAURADA: inclinado -6deg */
+    transform: translate(-50%, -50%) rotate(-6deg) scale(0.5); 
+    opacity: 0; 
+    pointer-events: none;
+}
+
+/* Comportamento Desktop (A partir de 768px) */
+@media (min-width: 768px) {
+    .logo-state-center {
+        top: 50%;
+    }
+    .logo-state-center img {
+        height: 12rem; 
+        width: auto;
+        filter: drop-shadow(6px 6px 0 rgba(0,0,0,1));
+    }
+    
+    .logo-state-corner {
+        opacity: 1;
+        pointer-events: auto;
+        top: 1.5rem;
+        left: 4rem;
+        /* Rotação brutalista (-6deg) 100% garantida no desktop! */
+        transform: translate(0, 0) rotate(-6deg) scale(1);
+        background-color: white;
+        border: 4px solid black;
+        padding: 0.5rem 1rem;
+        box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
+    }
+    .logo-state-corner img {
+        height: 3.5rem; 
+        width: auto;
+        filter: drop-shadow(2px 2px 0 rgba(0,0,0,1));
+    }
+}
+
+/* ==========================================
+   PADRÕES E ESTILOS GERAIS
+========================================== */
+.bg-checkerboard {
+    background-image: 
+        linear-gradient(45deg, rgba(0, 0, 0, 0.05) 25%, transparent 25%, transparent 75%, rgba(0, 0, 0, 0.05) 75%, rgba(0, 0, 0, 0.05)),
+        linear-gradient(45deg, rgba(0, 0, 0, 0.05) 25%, transparent 25%, transparent 75%, rgba(0, 0, 0, 0.05) 75%, rgba(0, 0, 0, 0.05));
+    background-size: 40px 40px;
+    background-position: 0 0, 20px 20px;
+}
+
+.bg-checkerboard-pink {
+    background-image: 
+        linear-gradient(45deg, rgba(255, 0, 255, 0.15) 25%, transparent 25%, transparent 75%, rgba(255, 0, 255, 0.15) 75%, rgba(255, 0, 255, 0.15)),
+        linear-gradient(45deg, rgba(255, 0, 255, 0.15) 25%, transparent 25%, transparent 75%, rgba(255, 0, 255, 0.15) 75%, rgba(255, 0, 255, 0.15));
+    background-size: 60px 60px;
+    background-position: 0 0, 30px 30px;
+}
+
+.brutal-shadow {
+    box-shadow: 8px 8px 0px 0px rgba(0,0,0,1);
+}
+
+.brutal-shadow-sm {
+    box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
+}
+
+.hover-brutal {
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+.hover-brutal:hover {
+    transform: translate(4px, 4px);
+    box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
+}
+.hover-brutal:active {
+    transform: translate(8px, 8px);
+    box-shadow: 0px 0px 0px 0px rgba(0,0,0,1);
+}
+
+@keyframes bg-scroll {
+    0% { background-position: 0 0; }
+    100% { background-position: -1000px 0; }
+}
+.animate-bg-scroll {
+    width: 100%;
+    background-repeat: repeat-x; 
+    background-image: url('./assets/Blocos.png'); 
+    animation: bg-scroll 15s linear infinite;
+}
+
+.brutal-white-outline {
+    filter: drop-shadow(3px 0px 0px white) 
+            drop-shadow(0px 3px 0px white)
+            drop-shadow(-3px 0px 0px white)
+            drop-shadow(0px -3px 0px white);
+}

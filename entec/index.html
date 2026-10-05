@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENTEC 2026 - Campeonatos E-Sports</title>
+    
+    <!-- Fonte Space Grotesk para o visual arrojado -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700;900&display=swap" rel="stylesheet">
+    
+    <!-- Ícones Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Tailwind CSS (via CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Importação do CSS Externo -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="selection:bg-[#ff00ff] selection:text-white">
+
+    <!-- Cursor Customizado em Pixel Art -->
+    <div id="custom-cursor"></div>
+
+    <!-- Navegação Superior -->
+    <nav class="fixed top-0 w-full z-50 bg-[#fdfbf7] border-b-4 border-black py-4 px-6 md:px-12 flex justify-between items-center">
+        <div class="flex items-center gap-4 md:gap-6">
+            <a href="https://www.instagram.com/uninassau.cg?stkn=czRxdHRma3d5dTlx" target="_blank" rel="noopener noreferrer">
+                <img src="./assets/logo-entec.png" alt="Logo ENTEC 2026" class="h-5 md:h-7 object-contain cursor-pointer hover-brutal">
+            </a>
+            <div class="w-1 h-5 bg-black transform rotate-12"></div>
+            <a href="https://www.instagram.com/jamlabsdev?stkn=OTRqNHBzbjYya3My" target="_blank" rel="noopener noreferrer">
+                <img src="./assets/logo-jamlabs.png" alt="Logo JAM Labs" class="h-5 md:h-7 object-contain cursor-pointer hover-brutal">
+            </a>
+        </div>
+        <div class="hidden md:flex gap-6 font-bold uppercase">
+            <a href="#fc26" class="hover:text-[#0055ff] transition-colors hover:underline decoration-4 underline-offset-4">EA FC 26</a>
+            <a href="#mk11" class="hover:text-[#ff00ff] transition-colors hover:underline decoration-4 underline-offset-4">Mortal Kombat 11</a>
+        </div>
+    </nav>
+
+    <!-- Seção Hero (Carrossel Dinâmico) -->
+    <section id="hero-section" class="relative pt-24 pb-20 md:pt-48 md:pb-24 px-4 md:px-12 min-h-[90vh] flex flex-col justify-center bg-checkerboard border-b-4 border-black overflow-hidden">
+        
+        <!-- Wrapper do Carrossel -->
+        <div class="w-full max-w-6xl mx-auto relative z-10 flex-grow flex flex-col justify-center">
+            
+            <!-- Logo Flutuante Inteligente -->
+            <div id="floating-hero-logo" class="logo-state-center pointer-events-none">
+                <img src="./assets/logo-hero.png" alt="ENTEC E-Sports">
+            </div>
+
+            <!-- Setas de Controlo -->
+            <div class="absolute left-0 md:left-4 top-1/2 -translate-y-1/2 z-30 hidden md:block">
+                <button id="prev-hero" class="bg-white border-4 border-black brutal-shadow-sm hover-brutal w-10 h-10 md:w-14 md:h-14 flex items-center justify-center cursor-pointer">
+                    <i data-lucide="arrow-left" class="w-6 h-6 md:w-8 md:h-8"></i>
+                </button>
+            </div>
+            <div class="absolute right-0 md:right-4 top-1/2 -translate-y-1/2 z-30 hidden md:block">
+                <button id="next-hero" class="bg-white border-4 border-black brutal-shadow-sm hover-brutal w-10 h-10 md:w-14 md:h-14 flex items-center justify-center cursor-pointer">
+                    <i data-lucide="arrow-right" class="w-6 h-6 md:w-8 md:h-8"></i>
+                </button>
+            </div>
+
+            <!-- Máscara do Carrossel -->
+            <div class="overflow-hidden w-full relative mb-8">
+                <div id="hero-track" class="flex transition-transform duration-700 ease-in-out items-center">
+                    
+                    <!-- Slide 1: Original (Distribuição Perfeita com Bloco Fantasma Fixo) -->
+                    <div class="w-full flex-shrink-0 flex flex-col items-center text-center py-6 px-4 md:px-24">
+                        
+                        <a href="https://www.instagram.com/uninassau.cg?stkn=czRxdHRma3d5dTlx" target="_blank" rel="noopener noreferrer" class="inline-block bg-white border-4 border-black px-4 py-2 brutal-shadow-sm transform -rotate-2 hover-brutal cursor-pointer relative z-10">
+                            <img src="./assets/logo-uninassau.png" alt="UNINASSAU" class="h-6 md:h-8 object-contain">
+                        </a>
+                        
+                        <!-- ESTE É O SEGREDO: Uma caixa rígida invisível que garante que os cartões não se tocam -->
+                        <div class="w-full h-[220px] md:h-[350px] pointer-events-none flex-shrink-0"></div>
+
+                        <div class="bg-[#fdfbf7] border-4 border-black p-3 md:px-6 inline-block brutal-shadow-sm transform skew-x-2 relative z-10">
+                            <p class="text-lg md:text-xl font-bold uppercase">
+                                Desperte seu superpoder e <br class="hidden md:block"/> 
+                                domine o código da vitória!
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2: Imagem de Divulgação 1 -->
+                    <div class="w-full flex-shrink-0 flex flex-col items-center justify-center py-10 px-6 md:px-28">
+                        <div class="relative w-full max-w-3xl bg-white border-4 border-black brutal-shadow p-2 md:p-4">
+                            <img src="./assets/post-1.png" alt="Divulgação 1" class="w-full aspect-video object-cover border-2 border-black bg-gray-200 pointer-events-none">
+                        </div>
+                    </div>
+
+                    <!-- Slide 3: Imagem de Divulgação 2 -->
+                    <div class="w-full flex-shrink-0 flex flex-col items-center justify-center py-10 px-6 md:px-28">
+                        <div class="relative w-full max-w-3xl bg-white border-4 border-black brutal-shadow p-2 md:p-4">
+                            <img src="./assets/post-2.png" alt="Divulgação 2" class="w-full aspect-video object-cover border-2 border-black bg-gray-200 pointer-events-none">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Indicadores -->
+            <div id="hero-dots" class="flex justify-center items-center gap-4 mb-8"></div>
+            
+        </div>
+
+        <!-- Botões Constantes Fixos -->
+        <div class="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center w-full relative z-20 mt-auto">
+            <a href="#fc26" class="bg-[#0055ff] text-white relative inline-flex items-center justify-center px-10 py-4 font-black uppercase text-lg md:text-xl border-4 border-black brutal-shadow hover-brutal cursor-pointer">
+                Torneio EA FC 26
+            </a>
+            <a href="#mk11" class="bg-[#ff00ff] text-white relative inline-flex items-center justify-center px-10 py-4 font-black uppercase text-lg md:text-xl border-4 border-black brutal-shadow hover-brutal cursor-pointer">
+                Torneio MK 11
+            </a>
+        </div>
+        
+    </section>
+
+    <!-- Faixa Animada (Marquee) -->
+    <div class="border-b-4 border-black overflow-hidden">
+        <div class="animate-bg-scroll h-16 md:h-24 bg-contain"></div>
+    </div>
+
+    <!-- Seção EA FC 26 -->
+    <section id="fc26" class="py-20 md:py-32 px-6 md:px-12 bg-[#fdfbf7] border-b-4 border-black">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
+            <div class="flex flex-col">
+                <div class="relative inline-block mb-12 self-start">
+                    <div class="absolute top-2 left-2 w-full h-full bg-[#0055ff] border-4 border-black"></div>
+                    <div class="relative bg-[#fdfbf7] border-4 border-black px-8 py-4 flex items-center justify-center">
+                        <img src="./assets/logo-fc26.png" alt="EA Sports FC 26 Logo" class="h-12 md:h-16 object-contain">
+                    </div>
+                </div>
+                <div class="bg-white border-4 border-black p-6 md:p-8 brutal-shadow relative">
+                    <div class="absolute -top-4 -right-4 bg-[#ff00ff] text-white font-black px-4 py-1 border-4 border-black transform rotate-6">
+                        TORNEIO 2V2
+                    </div>
+                    <h3 class="text-3xl font-black mb-4 uppercase">A Glória é em Dupla!</h3>
+                    <p class="text-lg font-bold mb-6">
+                        A comunicação e a tática em conjunto ditarão o ritmo da partida. Convoque sua dupla, alinhe sua estratégia e prepare-se para buscar a taça no gramado virtual.
+                    </p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center gap-3 font-bold text-lg">
+                            <i data-lucide="users" class="text-[#0055ff]"></i> Formato: Co-op (2v2)
+                        </li>
+                        <li class="flex items-center gap-3 font-bold text-lg">
+                            <i data-lucide="swords" class="text-[#ff00ff]"></i> Sistema: Eliminatória Simples
+                        </li>
+                        <li class="flex items-center gap-3 font-bold text-lg">
+                            <i data-lucide="trophy" class="text-[#00cc66]"></i> Premiação: Taça e Kits Exclusivos
+                        </li>
+                    </ul>
+                    <a href="https://augustocgm.github.io/Entec_Campeonato_FC26/" target="_blank" rel="noopener noreferrer" class="w-full bg-[#00cc66] text-black relative inline-flex items-center justify-center gap-2 px-4 py-4 font-black uppercase text-lg md:text-xl border-4 border-black brutal-shadow hover-brutal text-center leading-tight">
+                        INSCREVA SUA DUPLA E MOSTRE O SEU FUTEBOL!
+                    </a>
+                </div>
+            </div>
+            <div class="relative w-full h-full hidden md:block">
+                <img src="./assets/arco-id.png" alt="Arco ENTEC" class="absolute inset-0 w-full h-full object-contain object-bottom z-0">
+                <div class="absolute inset-0 flex items-end justify-center z-10 pb-4">
+                    <img id="fc-player-render" src="assets/render-vini.png" alt="Jogador FC26" class="h-[85%] w-auto object-contain object-bottom drop-shadow-[8px_8px_0_rgba(0,0,0,0.5)]">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Mortal Kombat 11 -->
+    <section id="mk11" class="py-20 md:py-32 px-6 md:px-12 bg-checkerboard-pink border-b-4 border-black">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
+            <div class="relative w-full h-full hidden md:block">
+                <img src="./assets/arco-id.png" alt="Arco ENTEC" class="absolute inset-0 w-full h-full object-contain object-bottom z-0">
+                <div class="absolute inset-0 flex items-end justify-center z-10 pb-4">
+                    <img id="mk-player-render" src="assets/full-1.png" alt="Lutador MK11" class="h-[85%] w-auto object-contain object-bottom drop-shadow-[8px_8px_0_rgba(0,0,0,0.5)]">
+                </div>
+            </div>
+            <div class="flex flex-col">
+                <div class="relative inline-block mb-12 self-end">
+                    <div class="absolute top-2 left-2 w-full h-full bg-[#ff00ff] border-4 border-black"></div>
+                    <div class="relative bg-[#fdfbf7] border-4 border-black px-8 py-4 flex items-center justify-center">
+                        <img src="./assets/logo-mk11.png" alt="Mortal Kombat 11 Logo" class="h-12 md:h-16 object-contain">
+                    </div>
+                </div>
+                <div class="bg-white border-4 border-black p-6 md:p-8 brutal-shadow relative">
+                    <div class="absolute -top-4 -left-4 bg-[#0055ff] text-white font-black px-4 py-1 border-4 border-black transform -rotate-6">
+                        Duplas (Tag Team)
+                    </div>
+                    <h3 class="text-3xl font-black mb-4 uppercase">Test Your Might!</h3>
+                    <p class="text-lg font-bold mb-6">
+                        Guerreiros do Earthrealm, preparem-se para cruzar os portais! A glória suprema não depende de um único lutador, mas da sintonia e estratégia implacável da sua dupla.
+                    </p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center gap-3 font-bold text-lg">
+                            <i data-lucide="users" class="text-[#0055ff]"></i> Formato: Tag Team (Duplas)
+                        </li>
+                        <li class="flex items-center gap-3 font-bold text-lg">
+                            <i data-lucide="swords" class="text-[#ff00ff]"></i> Sistema: Melhor de 3
+                        </li>
+                        <li class="flex items-center gap-3 font-bold text-lg">
+                            <i data-lucide="map-pin" class="text-[#00cc66]"></i> Local: UNINASSAU (18h às 21h)
+                        </li>
+                    </ul>
+                    <a href="https://augustocgm.github.io/Entec_Campeonato_MK11_VP/" target="_blank" rel="noopener noreferrer" class="w-full bg-[#ff00ff] text-white relative inline-flex items-center justify-center gap-2 px-4 py-4 font-black uppercase text-lg md:text-xl border-4 border-black brutal-shadow hover-brutal text-center leading-tight">
+                        INSKREVA SUA DUPLA E PROVE SEU VALOR NO KOMBATE!
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Botão Flutuante (Ações Rápidas) -->
+    <div class="fixed bottom-6 right-6 z-[100] flex flex-col items-center gap-4">
+        <div id="fab-menu" class="flex flex-col gap-4 items-center opacity-0 translate-y-8 pointer-events-none transition-all duration-300 origin-bottom mb-2">
+            <!-- (Itens do botão mantidos iguais) -->
+            <div class="group relative flex items-center">
+                <span class="absolute right-full mr-4 bg-white text-black font-black uppercase px-3 py-1 text-sm border-2 border-black opacity-0 group-hover:opacity-100 transition-all duration-200 pointer-events-none translate-x-2 group-hover:translate-x-0 whitespace-nowrap brutal-shadow-sm">
+                    Torneio FC 26
+                </span>
+                <a href="https://augustocgm.github.io/Entec_Campeonato_FC26/" target="_blank" rel="noopener noreferrer" class="w-14 h-14 md:w-16 md:h-16 rounded-full bg-[#0055ff] border-[3px] border-black brutal-shadow-sm hover-brutal flex items-center justify-center overflow-hidden p-2 md:p-2.5 cursor-pointer">
+                    <img src="./assets/logo-fc-circle.png" alt="FC 26" class="w-full h-full object-contain">
+                </a>
+            </div>
+            <div class="group relative flex items-center">
+                <span class="absolute right-full mr-4 bg-white text-black font-black uppercase px-3 py-1 text-sm border-2 border-black opacity-0 group-hover:opacity-100 transition-all duration-200 pointer-events-none translate-x-2 group-hover:translate-x-0 whitespace-nowrap brutal-shadow-sm">
+                    Torneio MK 11
+                </span>
+                <a href="https://augustocgm.github.io/Entec_Campeonato_MK11_VP/" target="_blank" rel="noopener noreferrer" class="w-14 h-14 md:w-16 md:h-16 rounded-full bg-[#ff00ff] border-[3px] border-black brutal-shadow-sm hover-brutal flex items-center justify-center overflow-hidden p-2 md:p-2.5 cursor-pointer">
+                    <img src="./assets/logo-mk-circle.png" alt="MK 11" class="w-full h-full object-contain">
+                </a>
+            </div>
+            <div class="group relative flex items-center">
+                <span class="absolute right-full mr-4 bg-white text-black font-black uppercase px-3 py-1 text-sm border-2 border-black opacity-0 group-hover:opacity-100 transition-all duration-200 pointer-events-none translate-x-2 group-hover:translate-x-0 whitespace-nowrap brutal-shadow-sm">
+                    Instagram UNINASSAU
+                </span>
+                <a href="https://www.instagram.com/uninassau.cg?stkn=czRxdHRma3d5dTlx" target="_blank" rel="noopener noreferrer" class="w-14 h-14 md:w-16 md:h-16 rounded-full bg-[#00cc66] border-[3px] border-black brutal-shadow-sm hover-brutal flex items-center justify-center overflow-hidden p-2 md:p-2.5 cursor-pointer">
+                    <img src="./assets/logo-nassau-circle.png" alt="UNINASSAU" class="w-full h-full object-contain">
+                </a>
+            </div>
+            <div class="group relative flex items-center">
+                <span class="absolute right-full mr-4 bg-white text-black font-black uppercase px-3 py-1 text-sm border-2 border-black opacity-0 group-hover:opacity-100 transition-all duration-200 pointer-events-none translate-x-2 group-hover:translate-x-0 whitespace-nowrap brutal-shadow-sm">
+                    Instagram JAM Labs
+                </span>
+                <a href="https://www.instagram.com/jamlabsdev?stkn=OTRqNHBzbjYya3My" target="_blank" rel="noopener noreferrer" class="w-14 h-14 md:w-16 md:h-16 rounded-full bg-white border-[3px] border-black brutal-shadow-sm hover-brutal flex items-center justify-center overflow-hidden p-2 md:p-2.5 cursor-pointer">
+                    <img src="./assets/logo-jamlabs.png" alt="JAM Labs" class="w-full h-full object-contain">
+                </a>
+            </div>
+        </div>
+        <button id="fab-btn" class="group relative w-20 h-20 md:w-24 md:h-24 outline-none brutal-white-outline transition-transform active:scale-95 cursor-pointer">
+            <img src="./assets/quadrado.png" alt="Fundo" class="absolute inset-0 w-full h-full object-contain z-0">
+            <img id="fab-star" src="./assets/estrela.png" alt="Estrela" class="absolute inset-0 w-full h-full object-contain z-10 transition-all duration-500 ease-in-out transform group-hover:rotate-90 group-[.is-open]:rotate-180 group-[.is-open]:opacity-0 group-[.is-open]:scale-50">
+            <img id="fab-controller" src="./assets/controle.png" alt="Comando" class="absolute inset-0 w-full h-full object-contain z-20 transition-all duration-500 ease-in-out transform -rotate-180 opacity-0 scale-50 group-[.is-open]:rotate-0 group-[.is-open]:opacity-100 group-[.is-open]:scale-100">
+        </button>
+    </div>
+
+    <!-- Rodapé -->
+    <footer class="bg-black text-white pt-12 pb-8 px-6 md:px-12 border-t-8 border-[#00cc66]">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left mb-10">
+            <div class="flex-shrink-0">
+                <img src="./assets/logo-entec-footer.png" alt="ENTEC 2026" class="h-16 md:h-20 w-auto object-contain mx-auto md:mx-0">
+            </div>
+            <div class="font-bold text-gray-400 max-w-sm">
+                <p>14ª Edição do Encontro de Tecnologia</p>
+                <p class="mt-2 text-sm leading-relaxed">IA no fluxo de DEVOPS + O mundo dos agentes de IA: autonomia, decisão e o futuro do dev</p>
+            </div>
+        </div>
+        <div class="max-w-6xl mx-auto border-t-2 border-gray-800 pt-8 mt-4 flex flex-col items-center justify-center gap-4">
+            <p class="text-xs font-bold text-gray-500 uppercase tracking-widest">Realização & Apoio</p>
+            <div class="flex items-center gap-8 opacity-80 hover:opacity-100 transition-opacity">
+                <a href="https://www.instagram.com/uninassau.cg?stkn=czRxdHRma3d5dTlx" target="_blank" rel="noopener noreferrer" class="hover:scale-105 transition-transform cursor-pointer">
+                    <img src="./assets/logo-nassau-footer.png" alt="UNINASSAU" class="h-6 md:h-8 w-auto object-contain">
+                </a>
+                <a href="https://www.instagram.com/jamlabsdev?stkn=OTRqNHBzbjYya3My" target="_blank" rel="noopener noreferrer" class="hover:scale-105 transition-transform cursor-pointer">
+                    <img src="./assets/logo-jam-footer.png" alt="JAM Labs" class="h-6 md:h-8 w-auto object-contain">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Importação do JavaScript Externo -->
+    <script src="script.js"></script>
+</body>
+</html>
